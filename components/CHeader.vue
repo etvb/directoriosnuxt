@@ -9,10 +9,10 @@
       <a class="mx-2" href="#" /><i class="fas fa-user h3 colorOrange" />
     </div>
     <div class="row">
-      <router-link class="nav-link text-dark small text-muted" to="/" />ALL
+      <router-link class="nav-link text-dark small text-muted" to="/">ALL</router-link>
       <!-- <a href="#" class="nav-link text-dark small">ALL-2</a> -->
       <div v-for="tag in tags" :key="tag.slug" class="nav">
-        <router-link class="nav-link text-dark small text-muted" :to="'/categori/'+tag.slug" /> {{ tag.name }}
+        <router-link class="nav-link text-dark small text-muted" :to="'/categori/'+tag.slug"> {{ tag.name }} </router-link>
       </div>
     </div>
   </div>

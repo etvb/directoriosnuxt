@@ -31,7 +31,7 @@
     </div>
     <div class="row justify-content-between">
       <dir v-for="voteInfo in vote" :key="voteInfo.id" class="col-12 col-sm-3 p-0 m-2">
-        <CNews :pnew="voteInfo" />
+        <CNews :pnew="voteInfo" @update="update" />
       </dir>
     </div>
   </div>

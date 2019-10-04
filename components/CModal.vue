@@ -20,8 +20,8 @@
           </button>
         </div>
         <div class="card-body">
-          <h5 class="card-title">
-            HOLA
+          <h5 class="card-title w-100 text-center">
+            {{prueba.title}}
           </h5>
           <p class="card-text">
             {{ prueba.description }}
