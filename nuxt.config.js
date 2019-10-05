@@ -2,7 +2,8 @@
 export default {
   mode: 'universal',
   env: {
-    apiUrl: 'https://newsletters.academlo.com/api/v1/newsletters'
+    apiUrl: 'https://newsletters.academlo.com/api/v1/newsletters',
+    apiTags: 'https://newsletters.academlo.com/api/v1/tags'
   },
   /*
   ** Headers of the page
@@ -15,7 +16,12 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }  
+    ],
+    script: [
+      { src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js' },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'},
+      { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'}
     ]
   },
   /*

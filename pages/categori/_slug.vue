@@ -36,9 +36,7 @@
     </div>
   </div>
 </template>
-
 <script>
-
 import axios from 'axios'
 import CNews from '~/components/CNews.vue'
 import CModal from '~/components/CModal.vue'
@@ -50,28 +48,46 @@ export default {
   data () {
     return {
       news: [],
+      news2: [],
       suscribed: [],
       vote: [],
-      infoNewsSelected: []
+      infoNewsSelected: [],
+      slug: this.$route.params.slug
     }
   },
   created () {
     this.getNews()
+    this.getVote()
   },
   methods: {
     getNews () {
+      const news = process.env.apiTags + '/' + this.slug + '?include=newsletters'
       axios
-        .get(process.env.apiUrl)
+        .get(news)
         .then((response) => {
-          this.news = response.data
+          this.news = response.data.newsletters
           this.suscribed = this.news.filter((arr) => {
             return arr.subscribed >= arr.target
           })
-          this.vote = this.news.filter((arr) => {
+          // this.vote = this.news.filter((arr) => {
+          //   return arr.subscribed < arr.target
+          // })
+        })
+        .catch(() => {
+          alert('Error en nwes')
+        })
+    },
+    getVote () {
+      axios
+        .get(process.env.apiUrl)
+        .then((response) => {
+          this.news2 = response.data
+          this.vote = this.news2.filter((arr) => {
             return arr.subscribed < arr.target
           })
-        }).catch(() => {
-          alert('Error en nwes')
+        })
+        .catch(() => {
+          alert('error en news2')
         })
     },
     update (value) {
