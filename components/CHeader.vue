@@ -5,8 +5,8 @@
       <!-- <div class="contenedorImg flex-grow-1 text-left">
                 <img src="" alt="Logo">
       </div>-->
-      <a class="mx-2" href="#" /><i class="fas fa-search h3 colorOrange" />
-      <a class="mx-2" href="#" /><i class="fas fa-user h3 colorOrange" />
+      <a class="mx-2 fas fa-search iconPerson" href="#" />
+      <a class="mx-2 fas fa-user iconPerson" href="#" />
     </div>
     <div class="row">
       <router-link class="nav-link text-dark small text-muted" to="/">ALL</router-link>
@@ -44,3 +44,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .iconPerson {
+    font-size: 2rem;
+    color: orangered;
+    padding: 0;
+  }
+</style>

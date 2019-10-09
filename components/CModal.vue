@@ -13,46 +13,66 @@
         <div class="modal-header">
           <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
           <div class="contenedorImg ml-auto">
-            <img :src="prueba.image" alt="foto" class="card-img-top rounded-circle" />
+            <img :src="prueba.image" alt="foto" class="card-img-top rounded-circle">
           </div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="card-body">
-          <h5 class="card-title w-100 text-center">{{ prueba.title }}</h5>
-          <p class="card-text">{{ prueba.description }}</p>
+          <h5 class="card-title w-100 text-center">
+            {{ prueba.title }}
+          </h5>
+          <p class="card-text">
+            {{ prueba.description }}
+          </p>
         </div>
-        <form action="#">
+        <form @submit.prevent="suscribe">
           <div class="position-relative">
             <i class="position-absolute movido fas fa-envelope colorOrange" />
-            <input class="w-100" type="text" placeholder="          Your email" />
+            <input v-model="formVote.email" class="w-100" type="text"  placeholder="          Your email">
           </div>
           <!-- <br> -->
-          <a href class="btn btn-primary mt-2 w-100">SUBSCRIBE</a>
+          <button class="btn btn-primary mt-2 w-100">SUBSCRIBE</button>
         </form>
       </div>
     </div>
   </div>
 </template>
 <script>
-// import Axios from 'axios'
+import axios from 'axios'
 export default {
+  // no puedo pasar los props directos a la data, pero si los puedo pasar a mi metodo como this.prueba.id
   props: ['prueba'],
   data () {
     return {
-
+      formVote: {
+        email: ''
+      }
+    }
+  },
+  // created () {
+  //   this.suscribe()
+  // },
+  methods: {
+    suscribe () {
+      const urlUser = 'https://newsletters.academlo.com/api/v1/users'
+      const data = {
+        email: this.formVote.email,
+        newsletter_id: this.prueba.id
+      }
+      console.log(data)
+      axios
+        .post(urlUser, data)
+        .then((response) => {
+          console.log(response.data)
+          alert('PERFECT')
+        })
+        .catch(() => {
+          alert('Error al tratar de suscribirse')
+        })
     }
   }
-  // methods: {
-  //   suscribe (){
-  //     const urlUser = 'https://newsletters.academlo.com/api/v1/users'
-  //     axios
-  //       .post(urlUser)
-
-  //   }
-
-  // }
 }
 </script>
 

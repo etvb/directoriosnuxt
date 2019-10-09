@@ -63,7 +63,7 @@
 </template>
 <script>
 export default {
-  props: ['pnew']
+  props: { pnew: Object }
 }
 </script>
 <style scoped>
