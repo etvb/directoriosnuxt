@@ -3,13 +3,13 @@
     <div class="container my-3">
       <div class="row justify-content-between">
         <router-link class="nav-link text-dark small text-muted" to="/">
-          Home
+          Logout
         </router-link>
         <h1 class>
           DASHBOARD
         </h1>
         <div>
-          <p>Hola: <span>nombre</span> </p>
+          <p>Hola: <span>{{ user.name }}</span> </p>
         </div>
       </div>
     </div>
@@ -45,18 +45,29 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="newsletter in news" :key="newsletter.id">
             <th scope="row">
-              1
+              {{newsletter.title}}
             </th>
             <td>
-              Mark
+              {{newsletter.description}}
             </td>
             <td>
-              Otto
+              {{newsletter.target}}
             </td>
             <td>
-              @mdo
+              {{newsletter.subscribed}}
+            </td>
+            <td>
+              {{newsletter.image}}
+            </td>
+            <td class="text-center">
+              <a href="" class="iconColor">
+                <i class="fas fa-pencil-alt"></i>
+              </a>
+              <a href="" class="iconColor">
+                <i class="fas fa-trash"></i>
+              </a>
             </td>
           </tr>
         </tbody>
@@ -65,5 +76,16 @@
   </div>
 </template>
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  middleware: 'authenticated',
+  computed: {
+    ...mapState(['user', 'news'])
+  }
+}
 </script>
+<style scoped>
+  .iconColor{
+    color: orangered;
+  }
+</style>
