@@ -52,7 +52,7 @@ export default {
         .catch((er) => {
           alert('problemas en login')
         })
-      this.login(this.form)
+      // this.login(this.form)
       // alert('LOGIN EXITOSO')
     }
   }

@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+// import { mapMutations } from 'vuex'
 import axios from 'axios'
 import CNews from '~/components/CNews.vue'
 import CModal from '~/components/CModal.vue'
@@ -61,13 +61,13 @@ export default {
     this.getNews()
   },
   methods: {
-    ...mapMutations(['increment']),
+    // ...mapMutations(['increment']),
     getNews () {
       axios
         .get(process.env.apiUrl)
         .then((response) => {
           this.news = response.data
-          this.increment(this.news)
+          // this.increment(this.news)
           this.suscribed = this.news.filter((arr) => {
             return arr.subscribed >= arr.target
           })

@@ -10,7 +10,7 @@
                 <img src="" alt="Logo">
       </div>-->
       <router-link class="mx-2 fas fa-search iconPerson" to="#" />
-      <router-link class="mx-2 fas fa-user iconPerson" to="login" />
+      <router-link class="mx-2 fas fa-user iconPerson" to="../login" />
       <!-- <a class="mx-2 fas fa-search iconPerson" href="#" /> -->
       <!-- <a class="mx-2 fas fa-user iconPerson" href="/login" /> -->
     </div>
